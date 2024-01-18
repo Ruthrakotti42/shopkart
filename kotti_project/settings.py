@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -77,12 +78,36 @@ WSGI_APPLICATION = 'kotti_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'rudrabase',
+        'USER': 'master',
+        'PASSWORD': 'master123',
+        'HOST': 'rudrabase.ctq2c844kk9b.ap-south-1.rds.amazonaws.com',
+        'PORT': '3306', 
     }
 }
  
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'rudrabase',
+#         'USER': 'master',
+#         'PASSWORD': 'master123',
+#         'HOST': 'rudrabase.ctq2c844kk9b.ap-south-1.rds.amazonaws.com',
+#         'PORT': '3306',  # Usually 3306
+#     }
+# }
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Amazon S3 settings.
+AWS_ACCESS_KEY_ID = 'AKIA2UC3EXNIURKIRQ7N'
+AWS_SECRET_ACCESS_KEY = '8q6un6Jt1ibS62cxzNozqgtgNM4HbTsm1NM08HzD'
+AWS_STORAGE_BUCKET_NAME = 'kotti123'
+AWS_S3_REGION_NAME = 'ap-south-1'  # e.g., us-west-1
+
+# Optional: Use Amazon S3 for static files storage.
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
