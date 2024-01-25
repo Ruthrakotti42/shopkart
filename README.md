@@ -1,2 +1,2 @@
-pip install django /br
+pip install django
 pip install jazzmine
